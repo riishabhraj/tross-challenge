@@ -4,6 +4,11 @@ A hosted HTTP API that returns structured LinkedIn profile data for a user
 who has authenticated via LinkedIn's official "Sign In with LinkedIn using
 OpenID Connect" OAuth flow. Built with FastAPI + PostgreSQL.
 
+**Live deployment (Railway):** https://api-production-bbbc.up.railway.app
+(`/health` is live now; `/auth/linkedin/login` and `/profile/me` will work
+once a real LinkedIn `LINKEDIN_CLIENT_ID`/`LINKEDIN_CLIENT_SECRET` pair is
+set on the deployment - see [Deployment](#deployment).)
+
 ## Approach
 
 LinkedIn does not offer any consent-based API that returns an arbitrary
@@ -192,9 +197,11 @@ Returns `401` if there's no valid session.
 
 ## Deployment
 
-Any container host that can run a Docker image plus provision a Postgres
-database works (Railway, Render, Fly.io, a small VPS behind Caddy/Nginx for
-TLS). The general steps:
+Deployed on **Railway**: a `Postgres` service plus an `api` service built
+directly from this repo's `Dockerfile`, with a generated
+`*.up.railway.app` HTTPS domain. Any other container host that can run a
+Docker image plus provision a Postgres database works just as well (Render,
+Fly.io, a small VPS behind Caddy/Nginx for TLS). The general steps:
 
 1. Provision a managed Postgres instance and set `DATABASE_URL`.
 2. Set `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `SESSION_SECRET`, and
