@@ -5,9 +5,6 @@ who has authenticated via LinkedIn's official "Sign In with LinkedIn using
 OpenID Connect" OAuth flow. Built with FastAPI + PostgreSQL.
 
 **Live deployment (Railway):** https://api-production-bbbc.up.railway.app
-(`/health` is live now; `/auth/linkedin/login` and `/profile/me` will work
-once a real LinkedIn `LINKEDIN_CLIENT_ID`/`LINKEDIN_CLIENT_SECRET` pair is
-set on the deployment - see [Deployment](#deployment).)
 
 ## Approach
 
